@@ -27,9 +27,9 @@ public class BasicAuthenticationFilter extends OncePerRequestFilter {
     @Value("${authentication.password}")
     private String password;
 
-    private final List<String> disabledAuth = List.of(
-            "PUT:/v1/employees"
-    );
+//    private final List<String> disabledAuth = List.of(
+//            "PUT:/v1/employees"
+//    );
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -50,14 +50,14 @@ public class BasicAuthenticationFilter extends OncePerRequestFilter {
         securityContext.setAuthentication(authRequest);
         filterChain.doFilter(request, response);
     }
-    @Override
-    protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
-        AntPathMatcher pathMatcher = new AntPathMatcher();
-        return disabledAuth.stream().anyMatch(p -> {
-            var value = p.split(":");
-            return pathMatcher.match(value[1], request.getServletPath()) && value[0].equals(request.getMethod());
-        } );
-    }
+//    @Override
+//    protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
+//        AntPathMatcher pathMatcher = new AntPathMatcher();
+//        return disabledAuth.stream().anyMatch(p -> {
+//            var value = p.split(":");
+//            return pathMatcher.match(value[1], request.getServletPath()) && value[0].equals(request.getMethod());
+//        } );
+//    }
 
     private void handleUnAuthorizedException(HttpServletResponse response,String message) throws IOException {
         response.setContentType("application/json");
