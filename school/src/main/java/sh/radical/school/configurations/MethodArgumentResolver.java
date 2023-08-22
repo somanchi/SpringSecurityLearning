@@ -1,0 +1,28 @@
+package sh.radical.school.configurations;
+
+import org.springframework.core.MethodParameter;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.support.WebDataBinderFactory;
+import org.springframework.web.context.request.NativeWebRequest;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
+import org.springframework.web.method.support.ModelAndViewContainer;
+import sh.radical.school.entities.Context;
+import sh.radical.school.entities.UserContext;
+
+public class MethodArgumentResolver implements HandlerMethodArgumentResolver {
+
+    @Override
+    public boolean supportsParameter(MethodParameter parameter) {
+       return parameter.getParameter().getType().equals(Context.class);
+    }
+
+    @Override
+    public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        Context context = new Context();
+        UserContext userContext = new UserContext(securityContext.getAuthentication().getName());
+        context.setUserContext(userContext);
+        return context;
+    }
+}
