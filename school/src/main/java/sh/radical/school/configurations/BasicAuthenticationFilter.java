@@ -50,6 +50,7 @@ public class BasicAuthenticationFilter extends OncePerRequestFilter {
         securityContext.setAuthentication(authRequest);
         filterChain.doFilter(request, response);
     }
+    // The below method can be used to avoid filter
 //    @Override
 //    protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
 //        AntPathMatcher pathMatcher = new AntPathMatcher();
