@@ -1,0 +1,204 @@
+2023-08-24 00:11:14.779 [background-preinit] [INFO] [o.h.validator.internal.util.Version] - HV000001: Hibernate Validator 6.2.5.Final
+2023-08-24 00:11:14.780 [main] [INFO] [sh.radical.hostel.HostelApplication] - Starting HostelApplication using Java 17.0.4 on saiprasadsomanchis-MacBook-Pro.local with PID 18060 (/Users/saiprasadsomanchi/Downloads/hostel/build/classes/java/main started by saiprasadsomanchi in /Users/saiprasadsomanchi/Downloads/hostel)
+2023-08-24 00:11:14.783 [main] [INFO] [sh.radical.hostel.HostelApplication] - No active profile set, falling back to 1 default profile: "default"
+2023-08-24 00:11:16.069 [main] [INFO] [o.s.d.r.c.RepositoryConfigurationDelegate] - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-24 00:11:16.138 [main] [INFO] [o.s.d.r.c.RepositoryConfigurationDelegate] - Finished Spring Data repository scanning in 62 ms. Found 1 JPA repository interfaces.
+2023-08-24 00:11:16.781 [main] [INFO] [o.s.b.w.e.tomcat.TomcatWebServer] - Tomcat initialized with port(s): 8080 (http)
+2023-08-24 00:11:16.786 [main] [INFO] [o.a.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8080"]
+2023-08-24 00:11:16.787 [main] [INFO] [o.a.catalina.core.StandardService] - Starting service [Tomcat]
+2023-08-24 00:11:16.787 [main] [INFO] [o.a.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-08-24 00:11:16.892 [main] [INFO] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+2023-08-24 00:11:16.892 [main] [INFO] [o.s.b.w.s.c.ServletWebServerApplicationContext] - Root WebApplicationContext: initialization completed in 1999 ms
+2023-08-24 00:11:17.035 [main] [ERROR] [o.s.b.w.e.tomcat.TomcatStarter] - Error starting Tomcat context. Exception: org.springframework.beans.factory.BeanCreationException. Message: Error creating bean with name 'basicAuthenticationFilter': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'USERNAME' in value "${USERNAME}"
+2023-08-24 00:11:17.070 [main] [INFO] [o.a.catalina.core.StandardService] - Stopping service [Tomcat]
+2023-08-24 00:11:17.079 [main] [WARN] [o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server; nested exception is org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+2023-08-24 00:11:17.106 [main] [INFO] [o.s.b.a.l.ConditionEvaluationReportLoggingListener] - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-08-24 00:11:17.131 [main] [ERROR] [o.s.boot.SpringApplication] - Application run failed
+org.springframework.context.ApplicationContextException: Unable to start web server; nested exception is org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:165)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:577)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
+	at sh.radical.hostel.HostelApplication.main(HostelApplication.java:10)
+Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:142)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:104)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:481)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:211)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:184)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:162)
+	... 8 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'basicAuthenticationFilter': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'USERNAME' in value "${USERNAME}"
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:405)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:213)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:213)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:176)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:171)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:156)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:87)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:262)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:236)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:53)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5211)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1393)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1383)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:916)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:835)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1393)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1383)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:916)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:265)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:430)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:930)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:486)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:123)
+	... 13 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'USERNAME' in value "${USERNAME}"
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:180)
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:126)
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:239)
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:210)
+	at org.springframework.core.env.AbstractPropertyResolver.resolveNestedPlaceholders(AbstractPropertyResolver.java:230)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertyResolver.getProperty(ConfigurationPropertySourcesPropertyResolver.java:79)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertyResolver.getProperty(ConfigurationPropertySourcesPropertyResolver.java:60)
+	at org.springframework.core.env.AbstractEnvironment.getProperty(AbstractEnvironment.java:594)
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer$1.getProperty(PropertySourcesPlaceholderConfigurer.java:153)
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer$1.getProperty(PropertySourcesPlaceholderConfigurer.java:149)
+	at org.springframework.core.env.PropertySourcesPropertyResolver.getProperty(PropertySourcesPropertyResolver.java:85)
+	at org.springframework.core.env.PropertySourcesPropertyResolver.getPropertyAsRawString(PropertySourcesPropertyResolver.java:74)
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:153)
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:126)
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:239)
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:210)
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer.lambda$processProperties$0(PropertySourcesPlaceholderConfigurer.java:191)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:936)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1332)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:657)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	... 52 common frames omitted
+2023-08-24 00:13:16.575 [background-preinit] [INFO] [o.h.validator.internal.util.Version] - HV000001: Hibernate Validator 6.2.5.Final
+2023-08-24 00:13:16.578 [main] [INFO] [sh.radical.hostel.HostelApplication] - Starting HostelApplication using Java 17.0.4 on saiprasadsomanchis-MacBook-Pro.local with PID 18192 (/Users/saiprasadsomanchi/Downloads/hostel/build/classes/java/main started by saiprasadsomanchi in /Users/saiprasadsomanchi/Downloads/hostel)
+2023-08-24 00:13:16.578 [main] [INFO] [sh.radical.hostel.HostelApplication] - No active profile set, falling back to 1 default profile: "default"
+2023-08-24 00:13:17.705 [main] [INFO] [o.s.d.r.c.RepositoryConfigurationDelegate] - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-24 00:13:17.759 [main] [INFO] [o.s.d.r.c.RepositoryConfigurationDelegate] - Finished Spring Data repository scanning in 48 ms. Found 1 JPA repository interfaces.
+2023-08-24 00:13:18.230 [main] [INFO] [o.s.b.w.e.tomcat.TomcatWebServer] - Tomcat initialized with port(s): 8080 (http)
+2023-08-24 00:13:18.235 [main] [INFO] [o.a.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8080"]
+2023-08-24 00:13:18.235 [main] [INFO] [o.a.catalina.core.StandardService] - Starting service [Tomcat]
+2023-08-24 00:13:18.235 [main] [INFO] [o.a.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-08-24 00:13:18.320 [main] [INFO] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+2023-08-24 00:13:18.320 [main] [INFO] [o.s.b.w.s.c.ServletWebServerApplicationContext] - Root WebApplicationContext: initialization completed in 1644 ms
+2023-08-24 00:13:18.574 [main] [INFO] [o.h.jpa.internal.util.LogHelper] - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-24 00:13:18.598 [main] [INFO] [org.hibernate.Version] - HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-08-24 00:13:18.662 [main] [INFO] [o.h.annotations.common.Version] - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-08-24 00:13:18.749 [main] [INFO] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Starting...
+2023-08-24 00:13:18.915 [main] [INFO] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Start completed.
+2023-08-24 00:13:18.923 [main] [INFO] [org.hibernate.dialect.Dialect] - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-08-24 00:13:19.281 [main] [INFO] [o.h.e.t.j.p.i.JtaPlatformInitiator] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-24 00:13:19.286 [main] [INFO] [o.s.o.j.LocalContainerEntityManagerFactoryBean] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-24 00:13:19.568 [main] [WARN] [o.s.b.a.s.s.UserDetailsServiceAutoConfiguration] - 
+
+Using generated security password: 3b7fd26f-8a7e-4abe-9925-a3b78b8d62f5
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-08-24 00:13:19.691 [main] [WARN] [o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-24 00:13:19.736 [main] [WARN] [o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration': Unsatisfied dependency expressed through method 'setFilterChains' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'configure' defined in class path resource [sh/radical/hostel/configurations/WebSecurity.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.security.web.SecurityFilterChain]: Factory method 'configure' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'mvcHandlerMappingIntrospector' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Invocation of init method failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Invalid mapping on handler class [sh.radical.hostel.controllers.HealthController]: public sh.radical.hostel.entities.Health sh.radical.hostel.controllers.HealthController.getHealth()
+2023-08-24 00:13:19.737 [main] [INFO] [o.s.o.j.LocalContainerEntityManagerFactoryBean] - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-24 00:13:19.738 [main] [INFO] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown initiated...
+2023-08-24 00:13:19.741 [main] [INFO] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown completed.
+2023-08-24 00:13:19.742 [main] [INFO] [o.a.catalina.core.StandardService] - Stopping service [Tomcat]
+2023-08-24 00:13:19.758 [main] [INFO] [o.s.b.a.l.ConditionEvaluationReportLoggingListener] - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-08-24 00:13:19.771 [main] [ERROR] [o.s.b.d.LoggingFailureAnalysisReporter] - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Invalid mapping pattern detected: /{/health}
+  ^
+Expected close capture character after variable name }
+
+Action:
+
+Fix this pattern in your application or switch to the legacy parser implementation with 'spring.mvc.pathmatch.matching-strategy=ant_path_matcher'.
+
+2023-08-24 00:16:11.033 [background-preinit] [INFO] [o.h.validator.internal.util.Version] - HV000001: Hibernate Validator 6.2.5.Final
+2023-08-24 00:16:11.035 [main] [INFO] [sh.radical.hostel.HostelApplication] - Starting HostelApplication using Java 17.0.4 on saiprasadsomanchis-MacBook-Pro.local with PID 18535 (/Users/saiprasadsomanchi/Downloads/hostel/build/classes/java/main started by saiprasadsomanchi in /Users/saiprasadsomanchi/Downloads/hostel)
+2023-08-24 00:16:11.035 [main] [INFO] [sh.radical.hostel.HostelApplication] - No active profile set, falling back to 1 default profile: "default"
+2023-08-24 00:16:12.155 [main] [INFO] [o.s.d.r.c.RepositoryConfigurationDelegate] - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-24 00:16:12.215 [main] [INFO] [o.s.d.r.c.RepositoryConfigurationDelegate] - Finished Spring Data repository scanning in 54 ms. Found 1 JPA repository interfaces.
+2023-08-24 00:16:12.701 [main] [INFO] [o.s.b.w.e.tomcat.TomcatWebServer] - Tomcat initialized with port(s): 8080 (http)
+2023-08-24 00:16:12.705 [main] [INFO] [o.a.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8080"]
+2023-08-24 00:16:12.706 [main] [INFO] [o.a.catalina.core.StandardService] - Starting service [Tomcat]
+2023-08-24 00:16:12.706 [main] [INFO] [o.a.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-08-24 00:16:12.809 [main] [INFO] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+2023-08-24 00:16:12.809 [main] [INFO] [o.s.b.w.s.c.ServletWebServerApplicationContext] - Root WebApplicationContext: initialization completed in 1683 ms
+2023-08-24 00:16:13.057 [main] [INFO] [o.h.jpa.internal.util.LogHelper] - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-24 00:16:13.087 [main] [INFO] [org.hibernate.Version] - HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-08-24 00:16:13.153 [main] [INFO] [o.h.annotations.common.Version] - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-08-24 00:16:13.236 [main] [INFO] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Starting...
+2023-08-24 00:16:13.411 [main] [INFO] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Start completed.
+2023-08-24 00:16:13.418 [main] [INFO] [org.hibernate.dialect.Dialect] - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-08-24 00:16:13.773 [main] [INFO] [o.h.e.t.j.p.i.JtaPlatformInitiator] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-24 00:16:13.786 [main] [INFO] [o.s.o.j.LocalContainerEntityManagerFactoryBean] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-24 00:16:14.071 [main] [WARN] [o.s.b.a.s.s.UserDetailsServiceAutoConfiguration] - 
+
+Using generated security password: e8edf6b2-466c-418c-aced-9159ff9b7c1d
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-08-24 00:16:14.197 [main] [WARN] [o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-24 00:16:15.090 [main] [INFO] [o.s.s.web.DefaultSecurityFilterChain] - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@66a50c93, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5bddd141, org.springframework.security.web.context.SecurityContextPersistenceFilter@4fbbd98c, org.springframework.security.web.header.HeaderWriterFilter@3340ff7c, org.springframework.web.filter.CorsFilter@4d6027be, org.springframework.security.web.authentication.logout.LogoutFilter@abf1816, sh.radical.hostel.configurations.KeyAuthenticationFilter@1775c4e7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@497fd334, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3879feec, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@475eb4fd, org.springframework.security.web.session.SessionManagementFilter@5e198c40, org.springframework.security.web.access.ExceptionTranslationFilter@7120daa6]
+2023-08-24 00:16:15.492 [main] [INFO] [o.a.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8080"]
+2023-08-24 00:16:15.506 [main] [INFO] [o.s.b.w.e.tomcat.TomcatWebServer] - Tomcat started on port(s): 8080 (http) with context path ''
+2023-08-24 00:16:15.621 [main] [INFO] [o.s.b.w.e.tomcat.TomcatWebServer] - Tomcat initialized with port(s): 8081 (http)
+2023-08-24 00:16:15.622 [main] [INFO] [o.a.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8081"]
+2023-08-24 00:16:15.622 [main] [INFO] [o.a.catalina.core.StandardService] - Starting service [Tomcat]
+2023-08-24 00:16:15.622 [main] [INFO] [o.a.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-08-24 00:16:15.640 [main] [INFO] [o.a.c.c.C.[Tomcat-1].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+2023-08-24 00:16:15.640 [main] [INFO] [o.s.b.w.s.c.ServletWebServerApplicationContext] - Root WebApplicationContext: initialization completed in 129 ms
+2023-08-24 00:16:15.652 [main] [INFO] [o.s.b.a.e.web.EndpointLinksResolver] - Exposing 3 endpoint(s) beneath base path '/actuator'
+2023-08-24 00:16:15.898 [main] [INFO] [o.a.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8081"]
+2023-08-24 00:16:15.900 [main] [INFO] [o.s.b.w.e.tomcat.TomcatWebServer] - Tomcat started on port(s): 8081 (http) with context path ''
+2023-08-24 00:16:15.919 [main] [INFO] [sh.radical.hostel.HostelApplication] - Started HostelApplication in 5.314 seconds (JVM running for 6.144)
+2023-08-24 00:16:16.108 [RMI TCP Connection(1)-192.168.1.34] [INFO] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-08-24 00:16:16.108 [RMI TCP Connection(1)-192.168.1.34] [INFO] [o.s.web.servlet.DispatcherServlet] - Initializing Servlet 'dispatcherServlet'
+2023-08-24 00:16:16.109 [RMI TCP Connection(1)-192.168.1.34] [INFO] [o.s.web.servlet.DispatcherServlet] - Completed initialization in 1 ms
+2023-08-24 00:17:32.659 [http-nio-8080-exec-7] [INFO] [o.s.api.AbstractOpenApiResource] - Init duration for springdoc-openapi is: 343 ms
+2023-08-24 00:18:44.208 [http-nio-8080-exec-2] [INFO] [s.r.h.controllers.RoomController] - Received a new create request
+2023-08-24 00:18:44.426 [http-nio-8080-exec-2] [INFO] [s.r.h.controllers.RoomController] - Create request for Room - 91246a39-e2f8-4847-adf5-d88fd3ce8047 is complete
+2023-08-24 00:19:01.394 [http-nio-8080-exec-4] [INFO] [s.r.h.c.RoomQueryController] - Received a get request for Room 91246a39-e2f8-4847-adf5-d88fd3ce8047 
+2023-08-24 00:19:01.434 [http-nio-8080-exec-4] [INFO] [s.r.h.c.RoomQueryController] - Get request for Room 91246a39-e2f8-4847-adf5-d88fd3ce8047 is complete 
+2023-08-24 00:19:14.974 [SpringApplicationShutdownHook] [INFO] [o.s.o.j.LocalContainerEntityManagerFactoryBean] - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-24 00:19:14.978 [SpringApplicationShutdownHook] [INFO] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown initiated...
+2023-08-24 00:19:14.982 [SpringApplicationShutdownHook] [INFO] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown completed.

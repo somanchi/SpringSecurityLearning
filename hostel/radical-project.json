@@ -1,0 +1,362 @@
+{
+	"types": {
+		"models": {
+			"Room": {
+				"implements": [],
+				"references": [],
+				"methods": {
+					"toString": {
+						"access": {
+							"level": "public"
+						},
+						"arguments": [],
+						"annotations": [
+							{
+								"annotation": "@Override",
+								"$ref": "java/lang/Override"
+							}
+						],
+						"body": "return roomId;",
+						"returns": [
+							{
+								"type": "string"
+							}
+						]
+					},
+					"getNewRoomId": {
+						"isStatic": true,
+						"access": {
+							"level": "public"
+						},
+						"arguments": [],
+						"annotations": [],
+						"references": [
+							{
+								"$ref": "java.util.UUID"
+							},
+							{
+								"$ref": "javax/persistence/CascadeType"
+							}
+						],
+						"body": " return UUID.randomUUID().toString();\n                ",
+						"returns": [
+							{
+								"type": "string",
+								"annotations": []
+							}
+						]
+					}
+				},
+				"annotations": [
+					{
+						"annotation": "@NoArgsContructor",
+						"$ref": "lombok/NoArgsConstructor"
+					},
+					{
+						"annotation": "@Getter",
+						"$ref": "lombok/Getter"
+					},
+					{
+						"annotation": "@Setter",
+						"$ref": "lombok/Setter"
+					},
+					{
+						"arguments": [],
+						"annotation": "@Entity",
+						"$ref": "javax/persistence/Entity"
+					},
+					{
+						"arguments": [
+							{
+								"name": {
+									"type": "string",
+									"annotations": [],
+									"access": {
+										"level": ""
+									},
+									"addedTime": 1692815902744,
+									"defaultType": "value",
+									"isStatic": false,
+									"of": [],
+									"references": [],
+									"default": "room"
+								}
+							}
+						],
+						"annotation": "@Table",
+						"$ref": "javax/persistence/Table"
+					}
+				],
+				"title": "Room",
+				"isAbstract": false,
+				"required": [],
+				"customProperties": {
+					"title": {}
+				},
+				"extends": [],
+				"generics": [],
+				"isFinal": false,
+				"isInterface": false,
+				"properties": {
+					"number": {
+						"type": "string",
+						"addedTime": 1692805765022,
+						"annotations": []
+					},
+					"names": {
+						"isStatic": false,
+						"access": {
+							"level": ""
+						},
+						"references": [],
+						"of": [],
+						"addedTime": 1692805784295,
+						"annotations": [],
+						"$ref": "java/util/List",
+						"items": {
+							"type": "string"
+						},
+						"defaultType": "value"
+					},
+					"createdBy": {
+						"type": "string",
+						"addedTime": 1692810560459,
+						"annotations": []
+					},
+					"lastModifiedBy": {
+						"type": "string",
+						"addedTime": 1692810563279,
+						"annotations": []
+					},
+					"createdOn": {
+						"format": "datetime",
+						"addedTime": 1692810563992,
+						"default": "OffsetDateTime.now().toInstant()",
+						"type": "string",
+						"defaultType": "expression",
+						"annotations": []
+					},
+					"roomId": {
+						"type": "string",
+						"annotations": []
+					},
+					"numberOfPeople": {
+						"type": "string",
+						"addedTime": 1692805774161,
+						"annotations": []
+					},
+					"lastModifiedOn": {
+						"format": "datetime",
+						"addedTime": 1692810562605,
+						"default": "OffsetDateTime.now().toInstant()",
+						"type": "string",
+						"defaultType": "expression",
+						"annotations": []
+					}
+				},
+				"key": "roomId",
+				"$id": "https://radical.sh/hostel/models/Room"
+			},
+			"TestRoomInput": {
+				"title": "TestRoomInput",
+				"type": "inputs",
+				"sourceClassName": "Room",
+				"properties": {
+					"number": {
+						"type": "string",
+						"addedTime": 1692805765022,
+						"disabled": true,
+						"annotations": []
+					},
+					"numberOfPeople": {
+						"type": "string",
+						"addedTime": 1692805774161,
+						"disabled": true,
+						"annotations": []
+					}
+				},
+				"$id": "https://radical.sh/hostel/inputs/TestRoomInput",
+				"annotations": [
+					{
+						"annotation": "@NoArgsContructor",
+						"$ref": "lombok/NoArgsConstructor"
+					},
+					{
+						"annotation": "@Getter",
+						"$ref": "lombok/Getter"
+					},
+					{
+						"annotation": "@Setter",
+						"$ref": "lombok/Setter"
+					}
+				]
+			}
+		},
+		"enums": {}
+	},
+	"action": {
+		"models": {
+			"Room": {
+				"actions": {
+					"Select": {
+						"apiEnabled": true,
+						"actionType": "sync",
+						"path": "",
+						"httpVerb": "Get",
+						"authStatus": false,
+						"parameters": {
+							"selectQueryParameters": {
+								"sortFields": [],
+								"filters": {}
+							}
+						},
+						"enabled": true
+					},
+					"Delete": {
+						"apiEnabled": true,
+						"actionType": "sync",
+						"path": "/{roomId}",
+						"httpVerb": "Delete",
+						"authStatus": true,
+						"parameters": {},
+						"enabled": true
+					},
+					"Update": {
+						"apiEnabled": true,
+						"actionType": "sync",
+						"path": "/{roomId}",
+						"httpVerb": "Put",
+						"authStatus": true,
+						"parameters": {},
+						"enabled": true
+					},
+					"Test": {
+						"apiEnabled": true,
+						"responseStatusCode": 201,
+						"actionType": "sync",
+						"path": "",
+						"httpVerb": "Post",
+						"redirectAction": "None",
+						"authStatus": false,
+						"parameters": {
+							"headers": {},
+							"selectedBodyParameters": {
+								"Room": {
+									"number": "number",
+									"numberOfPeople": "numberOfPeople"
+								}
+							},
+							"queryParameters": {},
+							"routeParameters": {},
+							"selectQueryParameters": {}
+						},
+						"enabled": true
+					},
+					"Create": {
+						"apiEnabled": true,
+						"actionType": "sync",
+						"httpVerb": "Post",
+						"parameters": {},
+						"enabled": true,
+						"authStatus": true
+					},
+					"Get": {
+						"apiEnabled": true,
+						"actionType": "sync",
+						"path": "/{roomId}",
+						"httpVerb": "Get",
+						"authStatus": false,
+						"parameters": {},
+						"enabled": true
+					}
+				},
+				"path": "rooms"
+			}
+		}
+	},
+	"project": {
+		"path": "/v1/",
+		"groupName": "sh.radical",
+		"build": {
+			"tool": "gradle"
+		},
+		"logger": {
+			"appenderConfig": {
+				"consoleAppender": {
+					"enabled": true
+				},
+				"fileAppender": {
+					"enabled": true
+				}
+			}
+		},
+		"health": {
+			"dependenciesHealthEnabled": true,
+			"enabled": true
+		},
+		"unitTests": {
+			"enabled": true
+		},
+		"packageName": "sh.radical.hostel",
+		"projectName": "hostel",
+		"version": {
+			"org.springframework.boot": "2.7.9"
+		},
+		"swagger": {
+			"enabled": true
+		},
+		"authentication": {
+			"enabled": true,
+			"authtype": "Basic"
+		}
+	},
+	"config": {
+		"customProperties": ""
+	},
+	"version": 9,
+	"store": {
+		"defaultStorage": {
+			"vendor": {
+				"name": "POSTGRE"
+			},
+			"dataBaseName": "RDBMS"
+		}
+	},
+	"outboundevents": {},
+	"channels": {
+		"default": {
+			"topicName": "defaultTopic72079",
+			"binderName": "default",
+			"channelName": "default",
+			"containsMultiSchemaEvents": true
+		}
+	},
+	"binders": {
+		"default": {
+			"type": "kafka",
+			"binderName": "default",
+			"brokers": "localhost:9092"
+		}
+	},
+	"integrations": {
+		"rest": {
+			"requestGroups": {
+				"default": {
+					"baseUrl": "https://radical.sh/api/",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"timeoutInMilliSeconds": 45000,
+					"authScheme": {
+						"type": "No Auth"
+					}
+				}
+			},
+			"requests": {}
+		}
+	},
+	"inboundevents": {},
+	"_persist": {
+		"version": 9
+	}
+}
