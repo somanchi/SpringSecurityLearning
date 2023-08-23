@@ -13,14 +13,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class WebSecurity {
 
-    String[] AUTH_WHITELIST = {
-            "/v3/api-docs/**",
-            "/actuator/**",
-            "/swagger-ui/**",
-            "/swagger-ui.html",
-            "/health",
-    };
-
 
     @Autowired
     private BasicAuthenticationFilter basicAuthenticationFilter;
@@ -31,10 +23,7 @@ public class WebSecurity {
                 .cors()
                 .and()
                 .csrf()
-                .disable().authorizeRequests().antMatchers(AUTH_WHITELIST).permitAll()
-                .antMatchers(HttpMethod.GET,"/v1/employees").permitAll()
-                .antMatchers(HttpMethod.GET,"/v1/employees/{\\d+}").permitAll()
-                .and()
+                .disable()
                 .httpBasic()
                 .disable()
                 .formLogin()

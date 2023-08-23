@@ -27,9 +27,17 @@ public class BasicAuthenticationFilter extends OncePerRequestFilter {
     @Value("${authentication.password}")
     private String password;
 
-//    private final List<String> disabledAuth = List.of(
-//            "PUT:/v1/employees"
-//    );
+    List<String> AUTH_WHITELIST = List.of(
+            "/v3/api-docs",
+            "/actuator",
+            "/swagger-ui",
+            "/swagger-ui.html",
+            "/health"
+    );
+
+    private final List<String> disabledAuth = List.of(
+            "GET:/v1/employees/{\\d+}"
+    );
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -51,14 +59,15 @@ public class BasicAuthenticationFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
     // The below method can be used to avoid filter
-//    @Override
-//    protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
-//        AntPathMatcher pathMatcher = new AntPathMatcher();
-//        return disabledAuth.stream().anyMatch(p -> {
-//            var value = p.split(":");
-//            return pathMatcher.match(value[1], request.getServletPath()) && value[0].equals(request.getMethod());
-//        } );
-//    }
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
+        var isWhiteListed = AUTH_WHITELIST.stream().anyMatch(it -> request.getServletPath().startsWith(it));
+        AntPathMatcher pathMatcher = new AntPathMatcher();
+        return isWhiteListed || disabledAuth.stream().anyMatch(p -> {
+            var value = p.split(":");
+            return pathMatcher.match(value[1], request.getServletPath()) && value[0].equals(request.getMethod());
+        } );
+    }
 
     private void handleUnAuthorizedException(HttpServletResponse response,String message) throws IOException {
         response.setContentType("application/json");

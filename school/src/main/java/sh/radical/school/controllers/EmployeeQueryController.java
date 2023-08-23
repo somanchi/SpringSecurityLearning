@@ -23,8 +23,8 @@ public class EmployeeQueryController {
 	@Autowired
 	EmployeeService employeeService;
 
-	@GetMapping(value = "employeeId")
-	public Employee get(@PathVariable(value = "employeeId") String employeeId,Context context) {
+	@GetMapping(value = "/{employeeId}")
+	public Employee get(@PathVariable(value = "employeeId") String employeeId, Context context) {
 		log.info("Received a get request for Employee {} ", employeeId);
 		//Context context = new Context();
 		Employee existingEmployee = employeeService.get(context, employeeId);
