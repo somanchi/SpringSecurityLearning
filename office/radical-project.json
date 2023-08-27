@@ -1,0 +1,304 @@
+{
+	"types": {
+		"models": {
+			"Employee": {
+				"implements": [],
+				"references": [],
+				"methods": {
+					"toString": {
+						"access": {
+							"level": "public"
+						},
+						"arguments": [],
+						"annotations": [
+							{
+								"annotation": "@Override",
+								"$ref": "java/lang/Override"
+							}
+						],
+						"body": "return employeeId;",
+						"returns": [
+							{
+								"type": "string"
+							}
+						]
+					},
+					"getNewEmployeeId": {
+						"isStatic": true,
+						"access": {
+							"level": "public"
+						},
+						"arguments": [],
+						"annotations": [],
+						"references": [
+							{
+								"$ref": "java.util.UUID"
+							},
+							{
+								"$ref": "javax/persistence/CascadeType"
+							}
+						],
+						"body": " return UUID.randomUUID().toString();\n                ",
+						"returns": [
+							{
+								"type": "string",
+								"annotations": []
+							}
+						]
+					}
+				},
+				"annotations": [
+					{
+						"annotation": "@NoArgsContructor",
+						"$ref": "lombok/NoArgsConstructor"
+					},
+					{
+						"annotation": "@Getter",
+						"$ref": "lombok/Getter"
+					},
+					{
+						"annotation": "@Setter",
+						"$ref": "lombok/Setter"
+					},
+					{
+						"arguments": [],
+						"annotation": "@Entity",
+						"$ref": "javax/persistence/Entity"
+					},
+					{
+						"arguments": [
+							{
+								"name": {
+									"type": "string",
+									"annotations": [],
+									"access": {
+										"level": ""
+									},
+									"addedTime": 1692869667436,
+									"defaultType": "value",
+									"isStatic": false,
+									"of": [],
+									"references": [],
+									"default": "employee"
+								}
+							}
+						],
+						"annotation": "@Table",
+						"$ref": "javax/persistence/Table"
+					}
+				],
+				"title": "Employee",
+				"isAbstract": false,
+				"required": [],
+				"customProperties": {
+					"title": {}
+				},
+				"extends": [],
+				"generics": [],
+				"isFinal": false,
+				"isInterface": false,
+				"properties": {
+					"name": {
+						"type": "string",
+						"addedTime": 1692100617646,
+						"annotations": []
+					},
+					"employeeId": {
+						"type": "string",
+						"annotations": []
+					},
+					"salary": {
+						"type": "string",
+						"addedTime": 1692100623837,
+						"annotations": []
+					}
+				},
+				"key": "employeeId",
+				"$id": "https://radical.sh/office/models/Employee"
+			}
+		},
+		"enums": {}
+	},
+	"action": {
+		"models": {
+			"Employee": {
+				"actions": {
+					"Select": {
+						"apiEnabled": false,
+						"parameters": {
+							"headers": {},
+							"selectedBodyParameters": {},
+							"queryParameters": {},
+							"routeParameters": {},
+							"selectQueryParameters": {
+								"sortFields": [
+									"name",
+									"salary",
+									"employeeId"
+								],
+								"filters": {
+									"name": [
+										"eq"
+									],
+									"salary": [
+										"eq"
+									],
+									"employeeId": [
+										"eq"
+									]
+								}
+							}
+						},
+						"enabled": false
+					},
+					"Delete": {
+						"apiEnabled": true,
+						"actionType": "sync",
+						"path": "/{employeeId}",
+						"httpVerb": "Delete",
+						"authStatus": true,
+						"parameters": {},
+						"enabled": true
+					},
+					"Update": {
+						"apiEnabled": true,
+						"actionType": "sync",
+						"path": "/{employeeId}",
+						"parameters": {},
+						"httpVerb": "Put",
+						"enabled": true,
+						"authStatus": true
+					},
+					"Create": {
+						"apiEnabled": true,
+						"actionType": "sync",
+						"parameters": {},
+						"httpVerb": "Post",
+						"enabled": true,
+						"authStatus": true
+					},
+					"Get": {
+						"apiEnabled": true,
+						"actionType": "sync",
+						"path": "/{employeeId}",
+						"parameters": {},
+						"httpVerb": "Get",
+						"enabled": true
+					}
+				},
+				"path": "employees"
+			}
+		}
+	},
+	"project": {
+		"path": "/v1/",
+		"groupName": "sh.radical",
+		"build": {
+			"tool": "gradle"
+		},
+		"logger": {
+			"appenderConfig": {
+				"consoleAppender": {
+					"enabled": true
+				},
+				"fileAppender": {
+					"enabled": true
+				}
+			}
+		},
+		"health": {
+			"dependenciesHealthEnabled": true,
+			"enabled": true
+		},
+		"unitTests": {
+			"enabled": true
+		},
+		"packageName": "sh.radical.office",
+		"projectName": "office",
+		"version": {
+			"org.springframework.boot": "2.7.9"
+		},
+		"swagger": {
+			"enabled": true
+		},
+		"authentication": {
+			"enabled": true,
+			"authtype": "Key Based"
+		}
+	},
+	"config": {
+		"customProperties": ""
+	},
+	"version": 9,
+	"store": {
+		"defaultStorage": {
+			"vendor": {
+				"name": "POSTGRE"
+			},
+			"dataBaseName": "RDBMS"
+		}
+	},
+	"outboundevents": {},
+	"channels": {
+		"default": {
+			"channelName": "default",
+			"topicName": "defaultTopic48826",
+			"binderName": "default",
+			"containsMultiSchemaEvents": true
+		}
+	},
+	"binders": {
+		"default": {
+			"type": "kafka",
+			"binderName": "default",
+			"brokers": "localhost:9092"
+		}
+	},
+	"integrations": {
+		"rest": {
+			"requestGroups": {
+				"default": {
+					"baseUrl": "https://radical.sh/api/",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"timeoutInMilliSeconds": 45000,
+					"authScheme": {
+						"type": "No Auth"
+					}
+				}
+			},
+			"requests": {
+				"tableau": {
+					"groupName": "default",
+					"httpVerb": "Get",
+					"url": "",
+					"requestName": "tableau",
+					"responseBody": {},
+					"requestBody": {
+						"type": {
+							"isStatic": false,
+							"access": {
+								"level": ""
+							},
+							"references": [],
+							"of": [],
+							"addedTime": 1692435562344,
+							"annotations": [],
+							"$ref": "java/util/List",
+							"items": {
+								"type": "string"
+							},
+							"defaultType": "value"
+						},
+						"encType": "text/plain"
+					}
+				}
+			}
+		}
+	},
+	"inboundevents": {},
+	"_persist": {
+		"version": 9
+	}
+}
