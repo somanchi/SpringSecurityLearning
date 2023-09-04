@@ -1,17 +1,10 @@
 package sh.radical.hostel.controllers;
 
-import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import sh.radical.hostel.entities.Context;
+import sh.radical.hostel.entities.PagedResponse;
 import sh.radical.hostel.models.Room;
 import sh.radical.hostel.services.RoomService;
 
@@ -24,15 +17,17 @@ public class RoomQueryController {
 	RoomService roomService;
 
 	@GetMapping
-	public List<Room> selectAll(
+	public PagedResponse<Room> selectAll(
 		Context context,
 		@RequestParam(value = "filters") String filters,
-		@RequestParam(value = "sort") String sort
+		@RequestParam(value = "sort") String sort,
+		@RequestParam(value = "limit") Integer limit,
+		@RequestParam(value = "offset") Integer offset
 	) {
-		log.info("fetching all values for the filters: {}", filters);
-		List<Room> existingrooms = roomService.getAll(context, filters, sort);
+		log.info("fetching values with pagelimit: {}, offset: {} for the filters: {} & sort: {}", limit, offset, filters, sort);
+		var rooms = roomService.getAll(context, filters, sort, limit, offset);
 		log.info("fetched values matching for filters: {}", filters);
-		return existingrooms;
+		return rooms;
 	}
 
 	@GetMapping(value = "/{roomId}")

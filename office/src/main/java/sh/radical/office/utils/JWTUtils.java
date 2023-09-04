@@ -41,7 +41,8 @@ public class JWTUtils {
            //TODO Add authorization for JWT here
 
            var authorities = authoritiesData.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toSet());
-           var user = new User(jwtObject.sub,"", authorities);
+            //TODO use deserialized jwtObject to update UserName
+           var user = new User(decodedToken.getSubject(),"", authorities);
            auth = new UsernamePasswordAuthenticationToken(user,jwtObject);
         }
         catch (Exception e) {

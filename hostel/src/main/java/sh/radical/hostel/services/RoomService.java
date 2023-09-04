@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sh.radical.hostel.entities.Context;
+import sh.radical.hostel.entities.PagedResponse;
 import sh.radical.hostel.exceptions.RoomNotFound;
 import sh.radical.hostel.inputs.CreateRoomInput;
 import sh.radical.hostel.inputs.TestRoomInput;
@@ -24,9 +25,9 @@ public class RoomService {
 	@Autowired
 	RoomMapper roomMapper;
 
-	public List<Room> getAll(Context context, String filters, String sort) {
+	public PagedResponse<Room> getAll(Context context, String filters, String sort, Integer limit, Integer offset) {
 		log.info("inside findAll service method");
-		return roomRepository.findAllRooms(filters, sort);
+		return roomRepository.findAllRooms(filters, sort,limit,offset);
 	}
 
 	public void delete(Context context, String roomId) {

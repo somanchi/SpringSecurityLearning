@@ -22,7 +22,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 	@Autowired
 	JWTUtils jwtUtils;
 
-	List<String> disabledAuth = List.of("GET:/v1/employees/{\\d+}");
+	List<String> disabledAuth = List.of(
+			"GET:/v1/employees/{\\d+}",
+			"GET:/v1/employees/"
+	);
 
 	List<String> AUTH_WHITELIST = List.of(
 		"/v3/api-docs",
