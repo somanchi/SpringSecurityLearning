@@ -1,4 +1,4 @@
-package sh.radical.office.configurations;
+package sh.radical.basicauthtest.configurations;
 
 import org.springframework.core.MethodParameter;
 import org.springframework.security.core.context.SecurityContext;
@@ -7,8 +7,8 @@ import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
-import sh.radical.office.entities.Context;
-import sh.radical.office.entities.UserContext;
+import sh.radical.basicauthtest.entities.Context;
+import sh.radical.basicauthtest.entities.UserContext;
 
 public class MethodArgumentResolver implements HandlerMethodArgumentResolver {
 

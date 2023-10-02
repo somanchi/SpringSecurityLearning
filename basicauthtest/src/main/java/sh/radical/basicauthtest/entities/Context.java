@@ -1,10 +1,10 @@
-package sh.radical.office.entities;
+package sh.radical.basicauthtest.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import sh.radical.office.entities.UserContext;
+import sh.radical.basicauthtest.entities.UserContext;
 
 @Getter
 @Setter
@@ -13,5 +13,6 @@ import sh.radical.office.entities.UserContext;
 public class Context {
 
 	public UserContext userContext;
+
 	public boolean isAuthenticated;
 }
