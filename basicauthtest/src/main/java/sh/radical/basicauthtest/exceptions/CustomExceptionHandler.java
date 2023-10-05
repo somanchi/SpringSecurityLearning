@@ -7,9 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-import sh.radical.basicauthtest.exceptions.CarNotFound;
-import sh.radical.basicauthtest.exceptions.ParserException;
-import sh.radical.basicauthtest.exceptions.ValidationException;
 
 @ControllerAdvice
 @Slf4j
@@ -39,6 +36,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 			HttpStatus.BAD_REQUEST
 		);
 	}
+
 
 	@ExceptionHandler(value = Exception.class)
 	public ResponseEntity genericExceptionHandler(Exception exception) {

@@ -5,11 +5,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.oauth2.jwt.JwtDecoders;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.stereotype.Component;
 import sh.radical.basicauthtest.models.Owner;
 
@@ -17,16 +16,15 @@ import sh.radical.basicauthtest.models.Owner;
 @Slf4j
 public class JWTDecoder {
 
-    @Value(value = "${spring.security.oauth2.resourceserver.jwt.issuer-uri}")
-    private String issuerUrl;
-
     @Autowired
     public ObjectMapper objectMapper;
+
+    @Autowired
+    public JwtDecoder jwtDecoder;
 
     public UsernamePasswordAuthenticationToken validateJwt(String token) {
         UsernamePasswordAuthenticationToken auth = null;
         try {
-            var jwtDecoder = JwtDecoders.fromIssuerLocation(issuerUrl);
             var decodedToken = jwtDecoder.decode(token);
             var jwtObject = objectMapper.convertValue(
                     decodedToken.getClaims(),

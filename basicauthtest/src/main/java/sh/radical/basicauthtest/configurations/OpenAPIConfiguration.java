@@ -18,15 +18,17 @@ public class OpenAPIConfiguration {
                 .components(
                         new Components()
                                 .addSecuritySchemes(
-                                        "basic Authentication Header",
+                                        "Client Credentials Authentication Header",
                                         new SecurityScheme()
                                                 .type(SecurityScheme.Type.HTTP)
                                                 .in(SecurityScheme.In.HEADER)
-                                                .bearerFormat("JWT").scheme("bearer")
+                                                .bearerFormat("JWT")
+                                                .scheme("bearer")
                                 )
                 )
                 .addSecurityItem(
-                        new SecurityRequirement().addList("basic Authentication Header")
+                        new SecurityRequirement()
+                                .addList("Client Credentials Authentication Header")
                 );
     }
 }

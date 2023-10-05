@@ -33,17 +33,22 @@ public class Parser {
 				.stream(filters.split(":and:"))
 				.forEach(filter -> {
 					String[] filterParams = filter.split(":");
-					String modelValue = filterParams[0];
-					String op = filterParams[1];
-					String values = filterParams[2];
-					validation.validateFilters(modelValue, op, modelName);
-					searchQueries.add(
-						new SearchQuery(
-							modelValue,
-							operationConstants.operations.get(op.toUpperCase()),
-							values
-						)
-					);
+					if (filterParams.length == 3) {
+						String modelValue = filterParams[0];
+						String op = filterParams[1];
+						String values = filterParams[2];
+						validation.validateFilters(modelValue, op, modelName);
+						searchQueries.add(
+								new SearchQuery(
+										modelValue,
+										operationConstants.operations.get(op.toUpperCase()),
+										values
+								)
+						);
+					}
+					else {
+						throw new ParserException("Invalid filter");
+					}
 				});
 
 			return searchQueries;

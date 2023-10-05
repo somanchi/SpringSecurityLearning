@@ -1,6 +1,6 @@
 package sh.radical.basicauthtest.configurations;
 
-import com.google.gson.Gson;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,6 +23,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Autowired
     JWTDecoder jwtDecoder;
+
+    @Autowired
+    ObjectMapper objectMapper;
 
     List<String> disabledAuth = List.of(
             "GET:/v1/cars",
@@ -94,10 +97,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         response.setContentType("application/json");
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         var out = response.getWriter();
-        out.write(
-                new Gson()
-                        .toJson(new ResponseEntity(message, HttpStatus.UNAUTHORIZED))
-        );
+        var jsonResponse = new ResponseEntity<String>(message,null,HttpStatus.UNAUTHORIZED);
+        out.write(objectMapper.writeValueAsString(jsonResponse));
         out.flush();
     }
 }
