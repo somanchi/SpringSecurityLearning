@@ -1,4 +1,4 @@
-# SpringSecurityLearning
+# SpringLearning
 
 All applicaitons in this repo use MethodArgumentsResolver to pass context to controllers
 
