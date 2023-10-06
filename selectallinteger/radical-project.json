@@ -1,0 +1,291 @@
+{
+	"types": {
+		"models": {
+			"Stundent": {
+				"properties": {
+					"name": {
+						"type": "string",
+						"addedTime": 1696490517847,
+						"annotations": []
+					},
+					"age": {
+						"type": "integer",
+						"annotations": [],
+						"access": {
+							"level": ""
+						},
+						"addedTime": 1696490524016,
+						"defaultType": "value",
+						"isStatic": false,
+						"of": [],
+						"references": []
+					},
+					"joiningDate": {
+						"type": "string",
+						"format": "datetime",
+						"annotations": [],
+						"access": {
+							"level": ""
+						},
+						"addedTime": 1696490533406,
+						"defaultType": "value",
+						"isStatic": false,
+						"of": [],
+						"references": []
+					},
+					"address": {
+						"type": "string",
+						"addedTime": 1696490541566,
+						"annotations": []
+					},
+					"score": {
+						"type": "number",
+						"annotations": [],
+						"access": {
+							"level": ""
+						},
+						"addedTime": 1696490549544,
+						"defaultType": "value",
+						"isStatic": false,
+						"of": [],
+						"references": []
+					},
+					"stundentId": {
+						"type": "string",
+						"addedTime": 1696490553602,
+						"annotations": []
+					}
+				},
+				"required": [],
+				"annotations": [
+					{
+						"annotation": "@NoArgsContructor",
+						"$ref": "lombok/NoArgsConstructor"
+					},
+					{
+						"annotation": "@Getter",
+						"$ref": "lombok/Getter"
+					},
+					{
+						"annotation": "@Setter",
+						"$ref": "lombok/Setter"
+					},
+					{
+						"arguments": [],
+						"annotation": "@Document",
+						"$ref": "org/springframework/data/mongodb/core/mapping/Document"
+					}
+				],
+				"isFinal": false,
+				"isAbstract": false,
+				"isInterface": false,
+				"references": [],
+				"extends": [],
+				"implements": [],
+				"methods": {
+					"toString": {
+						"access": {
+							"level": "public"
+						},
+						"arguments": [],
+						"annotations": [
+							{
+								"annotation": "@Override",
+								"$ref": "java/lang/Override"
+							}
+						],
+						"body": "return stundentId;",
+						"returns": [
+							{
+								"type": "string"
+							}
+						]
+					},
+					"getNewStundentId": {
+						"isStatic": true,
+						"access": {
+							"level": "public"
+						},
+						"arguments": [],
+						"annotations": [],
+						"references": [
+							{
+								"$ref": "java.util.UUID"
+							}
+						],
+						"body": " return UUID.randomUUID().toString();\n                ",
+						"returns": [
+							{
+								"type": "string",
+								"addedTime": 1696490553602,
+								"annotations": []
+							}
+						]
+					}
+				},
+				"generics": [],
+				"customProperties": {
+					"title": {}
+				},
+				"title": "Stundent",
+				"$id": "https://radical.sh/selectallinteger/models/Stundent",
+				"key": "stundentId"
+			}
+		},
+		"enums": {}
+	},
+	"action": {
+		"models": {
+			"Stundent": {
+				"actions": {
+					"Create": {
+						"enabled": true,
+						"httpVerb": "Post",
+						"apiEnabled": true,
+						"actionType": "sync",
+						"isAuthEnabled": false,
+						"parameters": {}
+					},
+					"Update": {
+						"enabled": true,
+						"httpVerb": "Put",
+						"apiEnabled": true,
+						"actionType": "sync",
+						"isAuthEnabled": false,
+						"parameters": {},
+						"path": "/{stundentId}"
+					},
+					"Get": {
+						"enabled": true,
+						"httpVerb": "Get",
+						"apiEnabled": true,
+						"actionType": "sync",
+						"isAuthEnabled": false,
+						"parameters": {},
+						"path": "/{stundentId}"
+					},
+					"Select": {
+						"enabled": true,
+						"httpVerb": "Get",
+						"apiEnabled": true,
+						"actionType": "sync",
+						"isAuthEnabled": false,
+						"parameters": {
+							"selectQueryParameters": {
+								"filters": {},
+								"sortFields": []
+							}
+						},
+						"path": ""
+					},
+					"Delete": {
+						"enabled": true,
+						"httpVerb": "Delete",
+						"apiEnabled": true,
+						"actionType": "sync",
+						"isAuthEnabled": false,
+						"parameters": {},
+						"path": "/{stundentId}"
+					}
+				},
+				"path": "stundents"
+			}
+		}
+	},
+	"project": {
+		"path": "/v1/",
+		"groupName": "sh.radical",
+		"build": {
+			"tool": "gradle"
+		},
+		"logger": {
+			"appenderConfig": {
+				"consoleAppender": {
+					"enabled": true
+				},
+				"fileAppender": {
+					"enabled": false
+				}
+			},
+			"enabled": true
+		},
+		"health": {
+			"dependenciesHealthEnabled": true,
+			"enabled": true
+		},
+		"unitTests": {
+			"enabled": false
+		},
+		"packageName": "sh.radical.selectallinteger",
+		"folderName": "selectallinteger",
+		"projectName": "selectallinteger",
+		"version": {
+			"org.springframework.boot": "3.1.2"
+		},
+		"swagger": {
+			"enabled": true
+		},
+		"authentication": {
+			"authSchemetype": [
+				"No Auth"
+			],
+			"authParms": {
+				"jwtAuthParams": {
+					"userId": "",
+					"issuerURL": "",
+					"jwtModel": ""
+				}
+			},
+			"enabled": false
+		}
+	},
+	"config": {
+		"customProperties": ""
+	},
+	"version": 16,
+	"store": {
+		"defaultStorage": {
+			"dataBaseName": "MONGO"
+		}
+	},
+	"outboundevents": {},
+	"channels": {
+		"default": {
+			"channelName": "default",
+			"topicName": "defaultTopic77286",
+			"binderName": "default",
+			"containsMultiSchemaEvents": true
+		}
+	},
+	"binders": {
+		"default": {
+			"type": "kafka",
+			"binderName": "default",
+			"brokers": "localhost:9092"
+		}
+	},
+	"integrations": {
+		"rest": {
+			"requestGroups": {
+				"Default": {
+					"baseUrl": "https://radical.sh/api/",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"timeoutInMilliSeconds": 45000,
+					"authScheme": {
+						"type": "No Auth"
+					}
+				}
+			},
+			"restSettings": {
+				"isRequestBodySelectionAllowedForAllVerbs": false
+			},
+			"requests": {}
+		}
+	},
+	"inboundevents": {},
+	"_persist": {
+		"version": 16
+	}
+}
