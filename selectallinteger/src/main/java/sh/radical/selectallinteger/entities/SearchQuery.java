@@ -8,9 +8,9 @@ import lombok.Data;
 @AllArgsConstructor
 public class SearchQuery {
 
-	String queryObject;
+	String filterName;
 
 	Operator operation;
 
-	Object value;
+	Object filterValue;
 }

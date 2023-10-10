@@ -27,7 +27,6 @@ public class Student {
 
 	String address;
 
-//	@Field(targetType = FieldType.DECIMAL128)
 	BigDecimal score;
 
 	@Id

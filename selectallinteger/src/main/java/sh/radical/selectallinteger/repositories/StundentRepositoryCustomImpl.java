@@ -52,8 +52,8 @@ public class StundentRepositoryCustomImpl implements StundentRepositoryCustom {
 			booleanBuilder.and(
 				Expressions.predicate(
 					query.getOperation(),
-					Expressions.stringPath(query.getQueryObject()),
-					Expressions.constant(query.getValue())
+					Expressions.stringPath(query.getFilterName()),
+					Expressions.constant(query.getFilterValue())
 				)
 			);
 		}

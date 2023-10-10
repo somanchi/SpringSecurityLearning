@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ import sh.radical.selectallinteger.exceptions.ParserException;
 @Slf4j
 @Component
 public class Parser {
+
+	private final Pattern FILTER_SYNTAX_PATTERN = Pattern.compile("([\\w]+):([\\w]+):(.*)");
 
 	OperationConstants operationConstants = new OperationConstants();
 
@@ -38,10 +41,10 @@ public class Parser {
 			Arrays
 				.stream(filters.split(":and:"))
 				.forEach(filter -> {
-					if (! Constants.FILTER_SYNTAX_PATTERN.matcher(filter).matches()) {
+					if (! FILTER_SYNTAX_PATTERN.matcher(filter).matches()) {
 						throw new ParserException("invalid syntax for filter " + filter);
 					}
-					Matcher matcher = Constants.FILTER_SYNTAX_PATTERN.matcher(filter);
+					Matcher matcher = FILTER_SYNTAX_PATTERN.matcher(filter);
 					matcher.find();
 					String modelValue = matcher.group(1);
 					String op = matcher.group(2);
