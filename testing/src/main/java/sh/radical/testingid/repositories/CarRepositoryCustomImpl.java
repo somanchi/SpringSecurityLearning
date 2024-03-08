@@ -48,24 +48,13 @@ public class CarRepositoryCustomImpl implements CarRepositoryCustom {
 		List<Sort.Order> sortorder = parser.getOrderByFields(sort, "car");
 		BooleanBuilder booleanBuilder = new BooleanBuilder();
 		for (SearchQuery query : searchQueries) {
-			if (query.getOperation() == Ops.IN) {
-				booleanBuilder.and(
-						Expressions.predicate(
-								Ops.IN,
-								Expressions.stringPath(query.getFilterName()),
-								Expressions.constant(query.getFilterValue())
-						)
-				);
-			}
-			else {
-				booleanBuilder.and(
-						Expressions.predicate(
-								query.getOperation(),
-								Expressions.stringPath(query.getFilterName()),
-								Expressions.constant(query.getFilterValue().get(0))
-						)
-				);
-			}
+			booleanBuilder.and(
+					Expressions.predicate(
+							query.getOperation(),
+							Expressions.stringPath(query.getFilterName()),
+							Expressions.constant(query.getFilterValue())
+					)
+			);
 		}
 		try {
 			if (limit == null) {
