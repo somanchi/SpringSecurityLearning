@@ -1,0 +1,229 @@
+{
+	"types": {
+		"models": {
+			"Car": {
+				"$schema": "http://json-schema.org/draft-04/schema#",
+				"title": "Car",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"owner": {
+						"type": "object",
+						"$ref": "https://radical.sh/testingid/models/Owner",
+						"required": [
+							"name"
+						]
+					},
+					"ID": {
+						"type": "string"
+					},
+					"vehicleType": {
+						"type": "string"
+					},
+					"awards": {
+						"items": {
+							"type": "object",
+							"$ref": "https://radical.sh/testingid/models/Award"
+						},
+						"$ref": "java/util/List"
+					}
+				},
+				"required": [],
+				"key": "ID",
+				"$id": "https://radical.sh/testingid/models/Car"
+			},
+			"Owner": {
+				"title": "Owner",
+				"properties": {
+					"name": {
+						"type": "string"
+					}
+				},
+				"required": [],
+				"$id": "https://radical.sh/testingid/models/Owner"
+			},
+			"Award": {
+				"title": "Award",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"year": {
+						"type": "string"
+					}
+				},
+				"required": [],
+				"$id": "https://radical.sh/testingid/models/Award"
+			}
+		},
+		"enums": {}
+	},
+	"action": {
+		"models": {
+			"Car": {
+				"actions": {
+					"Select": {
+						"apiEnabled": true,
+						"actionType": "sync",
+						"path": "",
+						"httpVerb": "Get",
+						"parameters": {
+							"selectQueryParameters": {
+								"sortFields": [
+									"name",
+									"ID",
+									"vehicleType"
+								],
+								"filters": {
+									"ID": [
+										"eq"
+									],
+									"name": [
+										"eq"
+									],
+									"vehicleType": [
+										"eq"
+									]
+								}
+							}
+						},
+						"enabled": true,
+						"isAuthEnabled": false
+					},
+					"Delete": {
+						"apiEnabled": true,
+						"actionType": "sync",
+						"path": "/{ID}",
+						"httpVerb": "Delete",
+						"parameters": {},
+						"enabled": true,
+						"isAuthEnabled": false
+					},
+					"Update": {
+						"apiEnabled": true,
+						"actionType": "sync",
+						"path": "/{ID}",
+						"httpVerb": "Put",
+						"parameters": {},
+						"enabled": true,
+						"isAuthEnabled": false
+					},
+					"Create": {
+						"apiEnabled": true,
+						"actionType": "sync",
+						"httpVerb": "Post",
+						"parameters": {},
+						"enabled": true,
+						"isAuthEnabled": false
+					},
+					"Get": {
+						"apiEnabled": true,
+						"actionType": "sync",
+						"path": "/{ID}",
+						"httpVerb": "Get",
+						"parameters": {},
+						"enabled": true,
+						"isAuthEnabled": false
+					}
+				},
+				"path": "cars"
+			}
+		}
+	},
+	"project": {
+		"path": "/v1/",
+		"groupName": "sh.radical",
+		"build": {
+			"tool": "gradle"
+		},
+		"logger": {
+			"appenderConfig": {
+				"consoleAppender": {
+					"enabled": true
+				},
+				"fileAppender": {
+					"enabled": true
+				}
+			}
+		},
+		"health": {
+			"dependenciesHealthEnabled": true,
+			"enabled": true
+		},
+		"unitTests": {
+			"enabled": false
+		},
+		"packageName": "sh.radical.testingid",
+		"folderName": "testingid",
+		"projectName": "testingid",
+		"version": {
+			"org.springframework.boot": "3.1.4"
+		},
+		"swagger": {
+			"enabled": true
+		},
+		"authentication": {
+			"authSchemetype": [
+				"No Auth"
+			],
+			"authParms": {
+				"jwtAuthParams": {
+					"userId": "",
+					"issuerURL": "https://example.com/",
+					"jwtModel": ""
+				}
+			},
+			"enabled": false
+		}
+	},
+	"config": {
+		"customProperties": ""
+	},
+	"version": 20,
+	"store": {
+		"defaultStorage": {
+			"dataBaseName": "MONGO"
+		}
+	},
+	"outboundevents": {},
+	"channels": {
+		"default": {
+			"topicName": "defaultTopic76360",
+			"binderName": "default",
+			"channelName": "default",
+			"containsMultiSchemaEvents": true
+		}
+	},
+	"binders": {
+		"default": {
+			"type": "kafka",
+			"binderName": "default",
+			"brokers": "localhost:9092"
+		}
+	},
+	"integrations": {
+		"rest": {
+			"requestGroups": {
+				"Default": {
+					"baseUrl": "https://radical.sh/api/",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"timeoutInMilliSeconds": 45000,
+					"authScheme": {
+						"type": "No Auth"
+					}
+				}
+			},
+			"restSettings": {
+				"isRequestBodySelectionAllowedForAllVerbs": false
+			},
+			"requests": {}
+		}
+	},
+	"inboundevents": {},
+	"_persist": {
+		"version": 20
+	}
+}
